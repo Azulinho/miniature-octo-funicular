@@ -3,31 +3,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-ingress-controller-nginx-ingress
+  name: nginx-ingress-nginx-ingress
   namespace: infra
   labels:
-    app.kubernetes.io/name: nginx-ingress-controller-nginx-ingress
+    app.kubernetes.io/name: nginx-ingress-nginx-ingress
     helm.sh/chart: nginx-ingress-0.8.0
     app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/instance: nginx-ingress-controller
+    app.kubernetes.io/instance: nginx-ingress
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: nginx-ingress-controller-nginx-ingress
+      app: nginx-ingress-nginx-ingress
   template:
     metadata:
       labels:
-        app: nginx-ingress-controller-nginx-ingress
+        app: nginx-ingress-nginx-ingress
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/port: "9113"
     spec:
-      serviceAccountName: nginx-ingress-controller-nginx-ingress
+      serviceAccountName: nginx-ingress-nginx-ingress
       hostNetwork: false
       containers:
       - image: "nginx/nginx-ingress:1.10.0"
-        name: nginx-ingress-controller-nginx-ingress
+        name: nginx-ingress-nginx-ingress
         imagePullPolicy: "IfNotPresent"
         ports:
         - name: http
@@ -67,8 +67,8 @@ spec:
           - -nginx-plus=false
           - -nginx-reload-timeout=0
           - -enable-app-protect=false
-          - -nginx-configmaps=$(POD_NAMESPACE)/nginx-ingress-controller-nginx-ingress
-          - -default-server-tls-secret=$(POD_NAMESPACE)/nginx-ingress-controller-nginx-ingress-default-server-tls
+          - -nginx-configmaps=$(POD_NAMESPACE)/nginx-ingress-nginx-ingress
+          - -default-server-tls-secret=$(POD_NAMESPACE)/nginx-ingress-nginx-ingress-default-server-tls
           - -ingress-class=nginx
           - -health-status=false
           - -health-status-uri=/nginx-health
@@ -78,9 +78,9 @@ spec:
           - -nginx-status-port=8080
           - -nginx-status-allow-cidrs=127.0.0.1
           - -report-ingress-status
-          - -external-service=nginx-ingress-controller-nginx-ingress
+          - -external-service=nginx-ingress-nginx-ingress
           - -enable-leader-election=true
-          - -leader-election-lock-name=nginx-ingress-controller-nginx-ingress-leader-election
+          - -leader-election-lock-name=nginx-ingress-nginx-ingress-leader-election
           - -enable-prometheus-metrics=true
           - -prometheus-metrics-listen-port=9113
           - -enable-custom-resources=true

@@ -3,12 +3,12 @@
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: nginx-ingress-controller-nginx-ingress
+  name: nginx-ingress-nginx-ingress
   labels:
-    app.kubernetes.io/name: nginx-ingress-controller-nginx-ingress
+    app.kubernetes.io/name: nginx-ingress-nginx-ingress
     helm.sh/chart: nginx-ingress-0.8.0
     app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/instance: nginx-ingress-controller
+    app.kubernetes.io/instance: nginx-ingress
 rules:
 - apiGroups:
   - ""
@@ -96,17 +96,17 @@ rules:
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: nginx-ingress-controller-nginx-ingress
+  name: nginx-ingress-nginx-ingress
   labels:
-    app.kubernetes.io/name: nginx-ingress-controller-nginx-ingress
+    app.kubernetes.io/name: nginx-ingress-nginx-ingress
     helm.sh/chart: nginx-ingress-0.8.0
     app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/instance: nginx-ingress-controller
+    app.kubernetes.io/instance: nginx-ingress
 subjects:
 - kind: ServiceAccount
-  name: nginx-ingress-controller-nginx-ingress
+  name: nginx-ingress-nginx-ingress
   namespace: infra
 roleRef:
   kind: ClusterRole
-  name: nginx-ingress-controller-nginx-ingress
+  name: nginx-ingress-nginx-ingress
   apiGroup: rbac.authorization.k8s.io

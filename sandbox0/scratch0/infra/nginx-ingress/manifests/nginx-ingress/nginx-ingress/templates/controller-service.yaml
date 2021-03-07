@@ -3,13 +3,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-ingress-controller-nginx-ingress
+  name: nginx-ingress-nginx-ingress
   namespace: infra
   labels:
-    app.kubernetes.io/name: nginx-ingress-controller-nginx-ingress
+    app.kubernetes.io/name: nginx-ingress-nginx-ingress
     helm.sh/chart: nginx-ingress-0.8.0
     app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/instance: nginx-ingress-controller
+    app.kubernetes.io/instance: nginx-ingress
 spec:
   externalTrafficPolicy: Local
   type: LoadBalancer
@@ -23,4 +23,4 @@ spec:
     protocol: TCP
     name: https
   selector:
-    app:  nginx-ingress-controller-nginx-ingress
+    app:  nginx-ingress-nginx-ingress
