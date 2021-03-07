@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: nginx-ingress-controller
   namespace: infra
-  version: "112"
+  fakeversion: "113"
 spec:
   project: infra.on.scratch0
   source:
