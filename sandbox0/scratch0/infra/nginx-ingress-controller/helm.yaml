@@ -2,23 +2,21 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: nginx-ingress-controller
+  namespace: infra
 spec:
-  destination:
-    name: ''
-    namespace: infra
-    server: 'https://kubernetes.default.svc'
+  project: infra.on.scratch0
   source:
-    path: ''
-    repoURL: 'https://kubernetes.github.io/ingress-nginx'
-    targetRevision: 3.23.0
+    repoURL: https://kubernetes.github.io/ingress-nginx
     chart: ingress-nginx
+    targetRevision: 3.23.0
     helm:
-      parameters:
-        - name: controller.setAsDefaultIngress
-          value: "true"
-  project: infrastructure.on.scratch0
+      values: |
+        controller:
+          setAsDefaultIngress: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: infra
   syncPolicy:
     automated:
-      prune: true
       selfHeal: true
-
+      prune: true
