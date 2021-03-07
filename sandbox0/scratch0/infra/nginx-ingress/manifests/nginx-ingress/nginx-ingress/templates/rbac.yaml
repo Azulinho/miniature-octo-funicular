@@ -105,7 +105,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: nginx-ingress-nginx-ingress
-  namespace: infra
+  namespace: nginx-ingress
 roleRef:
   kind: ClusterRole
   name: nginx-ingress-nginx-ingress

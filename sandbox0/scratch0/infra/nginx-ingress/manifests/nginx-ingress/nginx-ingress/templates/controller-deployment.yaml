@@ -4,7 +4,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-ingress-nginx-ingress
-  namespace: infra
+  namespace: nginx-ingress
   labels:
     app.kubernetes.io/name: nginx-ingress-nginx-ingress
     helm.sh/chart: nginx-ingress-0.8.0

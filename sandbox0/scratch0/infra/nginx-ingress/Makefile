@@ -2,7 +2,7 @@ HELMREPO := https://helm.nginx.com/stable
 RELEASE := nginx-ingress
 VERSION := 0.8.0
 CHART := nginx-ingress
-NAMESPACE := infra
+NAMESPACE := nginx-ingress
 
 default:
 	rm -rf manifests
