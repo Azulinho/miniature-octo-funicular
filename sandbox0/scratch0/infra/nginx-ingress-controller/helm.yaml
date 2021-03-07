@@ -4,17 +4,21 @@ metadata:
   name: nginx-ingress-controller
 spec:
   destination:
+    name: ''
     namespace: infra
-    server: https://kubernetes.default.svc
-  project: infra.on.scratch0
+    server: 'https://kubernetes.default.svc'
   source:
+    path: ''
+    repoURL: 'https://kubernetes.github.io/ingress-nginx'
+    targetRevision: 3.23.0
+    chart: ingress-nginx
     helm:
       parameters:
-        - name: "controller.setAsDefaultIngress"
+        - name: controller.setAsDefaultIngress
           value: "true"
-    path: charts/ingress-nginx/
-    repoURL: https://github.com/kubernetes/ingress-nginx.git
-    targetRevision: helm-chart-3.23.0
+  project: infrastructure.on.scratch0
   syncPolicy:
     automated:
       prune: true
+      selfHeal: true
+
