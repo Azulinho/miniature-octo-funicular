@@ -16,4 +16,4 @@ spec:
     targetRevision: master
   syncPolicy:
     automated:
-      prune: true
+      prune: false
