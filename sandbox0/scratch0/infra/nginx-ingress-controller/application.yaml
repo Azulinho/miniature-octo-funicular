@@ -14,8 +14,6 @@ spec:
     path: sandbox0/scratch0/nginx-ingress-controller/Charts/
     repoURL: https://github.com/Azulinho/miniature-octo-funicular.git
     targetRevision: master
-    valuesFiles:
-    - values.yaml
   syncPolicy:
     automated:
       prune: true
