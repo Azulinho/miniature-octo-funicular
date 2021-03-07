@@ -1,7 +1,4 @@
 controller:
-  service:
-    internal:
-      enabled: true
-      annotations:
-        # Create internal ELB
-        service.beta.kubernetes.io/aws-load-balancer-internal: 0.0.0.0/0
+  replicaCount: "2"
+  controller.setAsDefaultIngress: "true"
+  prometheus.create: "true"

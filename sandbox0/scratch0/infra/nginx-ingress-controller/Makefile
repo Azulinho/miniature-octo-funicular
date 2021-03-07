@@ -1,7 +1,7 @@
-HELMREPO := https://kubernetes.github.io/ingress-nginx
-RELEASE := ingress-nginx-controller
-VERSION := 3.23.0
-CHART := ingress-nginx
+HELMREPO := https://helm.nginx.com/stable
+RELEASE := nginx-ingress-controller
+VERSION := 0.8.0
+CHART := nginx-ingress
 NAMESPACE := infra
 
 default:

@@ -1,0 +1,26 @@
+---
+# Source: nginx-ingress/templates/controller-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-ingress-controller-nginx-ingress
+  namespace: infra
+  labels:
+    app.kubernetes.io/name: nginx-ingress-controller-nginx-ingress
+    helm.sh/chart: nginx-ingress-0.8.0
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/instance: nginx-ingress-controller
+spec:
+  externalTrafficPolicy: Local
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  - port: 443
+    targetPort: 443
+    protocol: TCP
+    name: https
+  selector:
+    app:  nginx-ingress-controller-nginx-ingress
