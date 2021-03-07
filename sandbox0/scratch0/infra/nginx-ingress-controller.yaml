@@ -6,10 +6,10 @@ metadata:
 spec:
   project: infra.on.scratch0
   source:
-    repoURL: https://kubernetes.github.io/ingress-nginx
-    chart: ingress-nginx
-    targetRevision: 3.23.0
     helm:
+      repoURL: https://kubernetes.github.io/ingress-nginx
+      chart: ingress-nginx
+      targetRevision: 3.23.0
       values: |
         controller:
           setAsDefaultIngress: true
