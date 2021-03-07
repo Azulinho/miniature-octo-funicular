@@ -4,9 +4,9 @@ VERSION := 3.23.0
 CHART := ingress-nginx
 
 default:
-	rm -rf templates/
+	rm -rf manifests
 	helm template \
-	--output-dir templates/ \
+	--output-dir manifests \
 	--values values.yaml \
 	--repo $(HELMREPO) \
 	--version $(VERSION) \
