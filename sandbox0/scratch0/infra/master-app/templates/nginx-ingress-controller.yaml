@@ -5,10 +5,9 @@ metadata:
   namespace: infra
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
+    modeapp_version: 1
   finalizers:
     - resources-finalizer.argocd.argoproj.io
-  labels:
-    version: 2
 spec:
   project: infra
   source:
