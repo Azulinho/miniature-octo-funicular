@@ -8,7 +8,7 @@ spec:
   project: infra.on.scratch0
   source:
     repoURL: https://github.com/Azulinho/miniature-octo-funicular.git
-    path: sandbox0/scratch0/infra/nginx-ingress-controller/manifests
+    path: sandbox0/scratch0/infra/nginx-ingress-controller/manifests/
     targetRevision: HEAD
     directory:
       recurse: true
