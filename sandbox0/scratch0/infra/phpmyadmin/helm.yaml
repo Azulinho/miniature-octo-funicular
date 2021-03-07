@@ -12,7 +12,7 @@ spec:
       parameters:
         - name: "service.type"
           value: "ClusterIP"
-    path: charts/bitnami/phpmyadmin
+    path: ./charts/bitnami/phpmyadmin/
     repoURL: https://github.com/bitnami/charts.git
     targetRevision: master
   syncPolicy:
