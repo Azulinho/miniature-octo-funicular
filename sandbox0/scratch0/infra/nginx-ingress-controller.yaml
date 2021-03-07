@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-ingress-controller
+  namespace: infra
+spec:
+  project: infra.on.scratch0
+  source:
+    repoURL: https://kubernetes.github.io/ingress-nginx
+    chart: ingress-nginx
+    targetRevision: 3.23.0
+    helm:
+      values: |
+        controller:
+          service:
+            internal:
+              enabled: true
+              annotations:
+                # Create internal ELB
+                service.beta.kubernetes.io/aws-load-balancer-internal: 0.0.0.0/0
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: infra
+  syncPolicy:
+    automated:
+      selfHeal: false
