@@ -5,6 +5,7 @@ metadata:
   namespace: infra
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
+    version: 11
 spec:
   project: infra
   source:
