@@ -9,13 +9,12 @@ spec:
   project: infra.on.scratch0
   source:
     helm:
-      valueFiles:
-      - values.yaml
+      parameters:
+        - name: "service.type"
+          value: "ClusterIP"
     path: charts/bitnami/phpmyadmin
     repoURL: https://github.com/bitnami/charts.git
     targetRevision: master
-    valuesFiles:
-    - values.yaml
   syncPolicy:
     automated:
       prune: true
