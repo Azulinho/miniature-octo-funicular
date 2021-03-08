@@ -45,7 +45,7 @@ spec:
   destination:
     namespace: nginx-ingress
     server: https://kubernetes.default.svc
-  project: nginx-ingress.on.scratch0
+  project: ns.nginx-ingress.on.scratch0
   source:
     repoURL: https://github.com/Azulinho/miniature-octo-funicular.git
     path: sandbox0/scratch0/nginx-ingress/
