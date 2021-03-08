@@ -2,13 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: nginx-ingress-controller
-  namespace: infra
+  namespace: test123
   fakeversion: "113"
 spec:
-  project: infra.on.scratch0
+  project: ns.test123.scratch0.sandbox0
   source:
     repoURL: https://github.com/Azulinho/miniature-octo-funicular.git
-    path: sandbox0/scratch0/infra/nginx-ingress-controller/manifests/
+    path: sandbox0/scratch0/test123/nginx-ingress-controller/
     targetRevision: HEAD
     directory:
       recurse: true

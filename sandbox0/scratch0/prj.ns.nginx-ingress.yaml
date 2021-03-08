@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nginx-ingress
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  labels:
+    aws_account_name: sandbox0
+    aws_environment: scratch0
+  name: ns.nginx-ingress.scratch0.sandbox0
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  description: nginx-ingress
+  destinations:
+  - namespace: nginx-ingress
+    server: https://kubernetes.default.svc
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  orphanedResources:
+    warn: true
+  sourceRepos:
+    - https://helm.nginx.com/stable
+    - https://charts.bitnami.com/bitnami
+    - https://github.com/banks/deployments.git
+    - https://github.com/Azulinho/miniature-octo-funicular.git
+status: {}
+
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ns.nginx-ingress.scratch0.sandbox0
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: nginx-ingress
+    server: https://kubernetes.default.svc
+  project: nginx-ingress.on.scratch0
+  source:
+    repoURL: https://github.com/Azulinho/miniature-octo-funicular.git
+    path: sandbox0/scratch0/nginx-ingress/
+    targetRevision: HEAD
+    directory:
+      recurse: true
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 3 # number of failed sync attempt retries; unlimited number of attempts if less than 0
+      backoff:
+        duration: 5s # the amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h")
+        factor: 2 # a factor to multiply the base duration after each failed retry
+        maxDuration: 10m # the maximum amount of time allowed for the backoff strategy
+---
