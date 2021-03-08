@@ -3,7 +3,6 @@ kind: Application
 metadata:
   name: nginx-ingress-controller
   namespace: test123
-  fakeversion: "113"
 spec:
   project: ns.test123.scratch0.sandbox0
   source:
